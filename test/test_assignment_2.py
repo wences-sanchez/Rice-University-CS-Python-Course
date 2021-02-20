@@ -1,43 +1,27 @@
 import unittest
-from assignment_2 import TwentyFortyEight
+from course_3.assignment_2 import TwentyFortyEight
 
 
 class TestTwentyFortyEight(unittest.TestCase):
 
-    def test_initial_board(self):
-        twentyFortyEight = TwentyFortyEight(10, 10)
-        board_height = twentyFortyEight.get_grid_height()
-        board_width = twentyFortyEight.get_grid_width()
+    def test_initial_params(self):
+        game = TwentyFortyEight(10, 10)
 
-        self.assertEqual(board_height, 10)
-        self.assertEqual(board_width, 10)
+        self.assertEqual(game.get_grid_height(), 10)
+        self.assertEqual(game.get_grid_width(), 10)
 
-        twentyFortyEight = TwentyFortyEight()
+    def test_common_board(self):
+        game = TwentyFortyEight(10, 10)
 
-    @unittest.skip('Not yet tested')
-    def test_reset(self):
-        self.fail()
+        self.assertEqual(game.get_grid_height(), 10)
+        self.assertEqual(game.get_grid_width(), 10)
 
-    @unittest.skip('Not yet tested')
-    def test_get_grid_height(self):
-        self.fail()
+        for i in range(game.get_grid_height()):
+            for j in range(game.get_grid_width()):
+                self.assertEqual(game.get_tile(i, j), 0)
 
-    @unittest.skip('Not yet tested')
-    def test_get_grid_width(self):
-        self.fail()
+    def test_empty_board(self):
+        game = TwentyFortyEight(0, 0)
 
-    @unittest.skip('Not yet tested')
-    def test_move(self):
-        self.fail()
-
-    @unittest.skip('Not yet tested')
-    def test_new_tile(self):
-        self.fail()
-
-    @unittest.skip('Not yet tested')
-    def test_set_tile(self):
-        self.fail()
-
-    @unittest.skip('Not yet tested')
-    def test_get_tile(self):
-        self.fail()
+        self.assertEqual(game.get_grid_height(), 0)
+        self.assertEqual(game.get_grid_width(), 0)

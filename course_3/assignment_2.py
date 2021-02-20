@@ -3,6 +3,7 @@ Clone of 2048 game.
 """
 
 # import poc_2048_gui
+import random
 
 # Directions, DO NOT MODIFY
 UP = 1
@@ -60,6 +61,7 @@ def move_to_left(line):
             index_output += 1
     return output
 
+
 class TwentyFortyEight:
     """
     Class to run the game logic.
@@ -69,13 +71,14 @@ class TwentyFortyEight:
         self.grid_height = grid_height
         self.grid_width = grid_width
 
+        self.grid = self.reset()
+
     def reset(self):
         """
         Reset the game so the grid is empty except for two
         initial tiles.
         """
-        # replace with your code
-        pass
+        return [[0 for j in range(self.grid_width)] for i in range(self.grid_height)]
 
     def __str__(self):
         """
@@ -96,6 +99,9 @@ class TwentyFortyEight:
         """
         return self.grid_width
 
+    def get_grid(self):
+        return self.grid
+
     def move(self, direction):
         """
         Move all tiles in the given direction and add
@@ -110,22 +116,24 @@ class TwentyFortyEight:
         square.  The tile should be 2 90% of the time and
         4 10% of the time.
         """
-        # replace with your code
-        pass
+        zeros_filtered_grid = list(filter(lambda c: c == 0, self.grid))
+        if zeros_filtered_grid:  # If it isn't empty
+            row = random.randrange(self.grid_height)
+            col = random.randrange(self.grid_width)
+            value = 2 if random.random() < 0.9 else 4
+            self.set_tile(row, col, value)
 
     def set_tile(self, row, col, value):
         """
         Set the tile at position row, col to have the given value.
         """
-        # replace with your code
-        pass
+        self.grid[row][col] = value
 
     def get_tile(self, row, col):
         """
         Return the value of the tile at position row, col.
         """
-        # replace with your code
-        return 0
+        return self.grid[row][col]
 
 
 # poc_2048_gui.run_gui(TwentyFortyEight(4, 4))
