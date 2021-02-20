@@ -66,8 +66,8 @@ class TwentyFortyEight:
     """
 
     def __init__(self, grid_height, grid_width):
-        # replace with your code
-        pass
+        self.grid_height = grid_height
+        self.grid_width = grid_width
 
     def reset(self):
         """
@@ -88,15 +88,13 @@ class TwentyFortyEight:
         """
         Get the height of the board.
         """
-        # replace with your code
-        return 0
+        return self.grid_height
 
     def get_grid_width(self):
         """
         Get the width of the board.
         """
-        # replace with your code
-        return 0
+        return self.grid_width
 
     def move(self, direction):
         """
